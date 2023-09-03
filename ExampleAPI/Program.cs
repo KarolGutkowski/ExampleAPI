@@ -4,7 +4,8 @@ using ExampleAPI.Models.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddXmlSerializerFormatters();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<PostDbContext>(options =>

@@ -24,10 +24,11 @@ namespace ExampleAPI.Controllers.Api
         }
 
         [HttpPost]
+        [Consumes("application/json")]
         public IActionResult AddPost([FromBody] Post post)
         {
             _postRepository.AddPost(post);
-            return Ok();
+            return Ok(post);
         }
     }
 }

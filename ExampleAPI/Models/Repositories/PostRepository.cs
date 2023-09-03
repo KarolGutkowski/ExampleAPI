@@ -22,9 +22,10 @@ namespace ExampleAPI.Models.Repositories
 
         public void AddPost(Post post)
         {
-            if(!_dbContext.Users.Any(p => p.Id == post.Author.Id))
+            if(_dbContext.Users.Any(p => p.Name == post.Author.Name))
             {
-                _dbContext.Users.Add(post.Author);
+                post.Author = _dbContext.Users
+                    .First(a => a.Name == post.Author.Name);
             }
 
             _dbContext.Posts.Add(post);
