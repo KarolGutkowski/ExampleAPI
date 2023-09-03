@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ExampleAPI.Models.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExampleAPI.Controllers.Api
@@ -7,9 +8,17 @@ namespace ExampleAPI.Controllers.Api
     [ApiController]
     public class PostsController : ControllerBase
     {
+        private readonly IPostRepository _postRepository;
+
+        public PostsController(IPostRepository postRepository)
+        {
+            _postRepository = postRepository;
+        }
+
         public IActionResult GetAll()
         {
-            return Ok("test");
+            var posts = _postRepository.AllPosts;
+            return Ok(posts);
         }
     }
 }
