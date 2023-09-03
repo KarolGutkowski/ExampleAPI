@@ -1,3 +1,4 @@
+using ExampleAPI.Consts;
 using ExampleAPI.Models;
 using ExampleAPI.Models.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<PostDbContext>(options =>
 {
     options.UseSqlServer(
-        builder.Configuration["ConnectionStrings:ExampleAPIDBContextConnection"]);
+        builder.Configuration[DbConfigurationConsts.ExampleAPIDBConfigSection]);
 });
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 
