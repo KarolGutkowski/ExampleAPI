@@ -22,6 +22,11 @@ namespace ExampleAPI.Models.Repositories
 
         public void AddPost(Post post)
         {
+            if(!_dbContext.Users.Any(p => p.Id == post.Author.Id))
+            {
+                _dbContext.Users.Add(post.Author);
+            }
+
             _dbContext.Posts.Add(post);
             _dbContext.SaveChanges();
         }
