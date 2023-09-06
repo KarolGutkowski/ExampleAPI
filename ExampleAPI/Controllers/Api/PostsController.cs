@@ -23,7 +23,7 @@ namespace ExampleAPI.Controllers.Api
             return Ok(posts);
         }
         
-        [HttpGet("{id}")]
+        [HttpGet("id={id}")]
         public IActionResult GetById(int id)
         {
             var post = _postRepository.GetPostById(id);
