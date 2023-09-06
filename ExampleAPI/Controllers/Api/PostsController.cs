@@ -22,6 +22,13 @@ namespace ExampleAPI.Controllers.Api
             var posts = _postRepository.AllPosts;
             return Ok(posts);
         }
+        
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var post = _postRepository.GetPostById(id);
+            return Ok(post);
+        }
 
         [HttpPost("json"), FormatFilter]
         [Consumes("application/json")]

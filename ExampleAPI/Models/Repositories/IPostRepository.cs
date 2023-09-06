@@ -3,7 +3,7 @@
 public interface IPostRepository
 {
     IEnumerable<Post> AllPosts { get; }
-    IEnumerable<Post> GetPostById(int id);
+    Post GetPostById(int id);
     void AddPost(Post post);
 }
 

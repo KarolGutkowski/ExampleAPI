@@ -15,9 +15,12 @@ namespace ExampleAPI.Models.Repositories
             _dbContext.Posts
             .Include(a => a.Author);
 
-        public IEnumerable<Post> GetPostById(int id)
+        public Post GetPostById(int id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Posts
+                .Where(post => post.Id == id)
+                .Include(a => a.Author)
+                .Single();
         }
 
         public void AddPost(Post post)
