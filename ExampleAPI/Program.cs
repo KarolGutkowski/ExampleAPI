@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
-    .AddXmlSerializerFormatters();
+    .AddXmlSerializerFormatters()
+    .AddXmlDataContractSerializerFormatters();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<PostDbContext>(options =>

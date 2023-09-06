@@ -23,12 +23,23 @@ namespace ExampleAPI.Controllers.Api
             return Ok(posts);
         }
 
-        [HttpPost]
+        [HttpPost("json"), FormatFilter]
         [Consumes("application/json")]
-        public IActionResult AddPost([FromBody] Post post)
+        [Produces("application/json")]
+        public IActionResult AddPostJson([FromBody] Post post)
         {
             _postRepository.AddPost(post);
             return Ok(post);
         }
+        
+        [HttpPost("xml")]
+        [Consumes("application/xml")]
+        [Produces("application/xml")]
+        public IActionResult AddPostXml([FromBody] Post post)
+        {
+            _postRepository.AddPost(post);
+            return Ok(post);
+        }
+        
     }
 }
