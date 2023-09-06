@@ -15,6 +15,7 @@ builder.Services.AddDbContext<PostDbContext>(options =>
         builder.Configuration[DbConfigurationConsts.ExampleAPIDBConfigSection]);
 });
 builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
